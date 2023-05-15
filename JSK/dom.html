@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Playing with the DOM</title>
+</head>
+<body>
+    <h1 id="main-heading">Hello world!</h1>
+    <!-- It's not even showing the heading specified in the HTML… -->
+    <!-- <script>
+        let headingElement = document.getElementById('main-heading')
+        console.log(headingElement.innerHTML)
+        let newHeadingText = prompt('Please provide a new heading:')
+        headingElement.innerHTML = newHeadingText
+    </script> -->
+
+    <!-- This is also randomly not working. -->
+    <script src="jquery-3.7.0.js"></script>
+    <script>
+        let newHeadingText = prompt('Please provide a new heading:')
+        $('#main-heading').text(newHeadingText)
+    </script>
+</body>
+</html>
