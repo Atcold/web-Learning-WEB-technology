@@ -12,11 +12,30 @@
         headingElement.innerHTML = newHeadingText
     </script> -->
 
-    <!-- This is also randomly not working. -->
     <script src="jquery-3.7.0.js"></script>
-    <script>
+    <!-- This is also randomly not working. -->
+    <!-- Replace title, asks for 3 hobbies. -->
+    <!-- <script>
         let newHeadingText = prompt('Please provide a new heading:')
         $('#main-heading').text(newHeadingText)
+        $('body').append('<p>This is a new paragraph.</p>')
+        for (let i = 0; i < 3; i++) {
+            let hobby = prompt('Tell me one of your hobbies!')
+            $('body').append('<p>' + hobby + '</p>')
+        }
+    </script> -->
+    <!-- Fading, sliding, hiding, and showing -->
+    <script>
+        // $('h1').text('This will fade out.').fadeOut(3000)
+        // $('h1').fadeOut(3000).fadeIn(2000)
+        // $('h1').slideUp(1000).slideDown(1000)
+        $('body').append('<p>This is a new paragraph.</p>')
+        // $('h1').slideUp(2000)
+        // for (let i = 0; i < 5; i++) {
+        //     $('h1').fadeOut(2000)
+        //     $('h1').fadeIn(2000)
+        // }
+        $('h1').hide().fadeIn(2000)
     </script>
 </body>
 </html>
