@@ -35,7 +35,12 @@
         //     $('h1').fadeOut(2000)
         //     $('h1').fadeIn(2000)
         // }
-        $('h1').hide().fadeIn(2000)
+        // $('h1').hide().fadeIn(2000)
+        // $('h1').fadeOut(1000).delay(3000).fadeIn(1000)
+        // $('h1').fadeTo(2000, 0.05)
+        // The following has the issue of now fading-in just the appended element.
+        for (let i = 0; i < 3; i++)
+            $('body').append('<p>' + prompt('Insert text') + '</p>').hide().fadeIn(2000)
     </script>
 </body>
 </html>
