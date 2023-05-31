@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Running title</title>
+</head>
+<body>
+    <!-- <h1>Running title</h1> -->
+    <!-- <h1 id="stop-me">Click me to stop me!</h1> -->
+    <h1 id="catch-me">Catch me!</h1>
+    <script src="jquery-3.7.0.js"></script>
+    <script>
+      let x = 0, y = 0, d = 'E', dt = 20, v = 3
+      function updateLocation() {
+        if (d == 'E')  // East
+          if (x < 200) x += v
+          else d = 'S'
+        else if (d == 'S')  // South
+          if (y < 200) y += v
+          else d = 'W'
+        else if (d == 'W')  // West
+          if (x > 0) x -= v
+          else d = 'N'
+        else if (d == 'N')  // North
+          if (y > 0) y -= v
+          else d = 'E'
+        $('h1').offset({
+          left: x,
+          top:  y,
+        })
+      }
+      let myInterval = setInterval(updateLocation, dt)
+      $('#stop-me').click(function (event) {
+        clearInterval(myInterval)
+      })
+      let hits = 0
+      $('#catch-me').click(function (event) {
+        dt -= 3
+        hits++
+        if (hits == 1) $('#catch-me').append(' Hits:')
+        $('#catch-me').append(' ' + hits)
+        clearInterval(myInterval)
+        if (hits < 5)
+          myInterval = setInterval(updateLocation, dt)
+        else alert('You hit the target 5 times!')
+      })
+    </script>
+</body>
+</html>
