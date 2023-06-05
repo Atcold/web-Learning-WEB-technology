@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find the buried treasure!</title>
+</head>
+<body>
+    <h1 id="heading">Find the buried treasure!</h1>
+    <img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png">
+    <p id="distance">Click on the map to find the treasure!</p>
+    <script src="jquery-3.7.0.js"></script>
+    <script>
+      // Get a random nb from 0 to size
+      function getRandomNumber(size) {
+        return Math.floor(Math.random() * size)
+      }
+      // Calculate distance betweek click and target
+      function getDistance(event, target) {
+        let dx = event.offsetX - target.x  
+        let dy = event.offsetY - target.y
+        return Math.hypot(dx, dy)
+      }
+      // Get string representing the distance
+      function getDistanceHint(distance) {
+             if (distance <  10) return 'Boiling hot!'
+        else if (distance <  20) return 'Really hot.'
+        else if (distance <  40) return 'Hot.'
+        else if (distance <  80) return 'Warm.'
+        else if (distance < 160) return 'Cold.'
+        else if (distance < 320) return 'Really cold.'
+        else                     return 'Freezing!'
+      }
+      // Initialise target
+      function initTarget() {
+        return {
+          x: getRandomNumber(width),
+          y: getRandomNumber(height),
+        }
+      }
+      // Set up variables
+      let width = 400, height = 400, clicks = 0
+      // Create random target location
+      let target = initTarget()
+      // Add click handler to img element
+      $('#map').click(function (event) {
+        clicks++
+        // Get distance between click and target
+        let distance = getDistance(event, target)
+        // Convert distance into hint
+        let distanceHint = getDistanceHint(distance)
+        // Update #distance element with new hint
+        $('#distance').text(distanceHint)
+        // If click is close enough, the user wins
+        if (distance <= 5) {
+          alert('Found treasure in ' + clicks + ' clicks!')
+          clicks = 0
+          target = initTarget()
+        $('#distance').text('Try again!')
+        }
+      })
+    </script>
+</body>
+</html>
